@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev — Dungeon Portfolio (Mobile)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dev — Dungeon Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -62,12 +62,52 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 0.6s ease;
+        }
+
+        .bg-dark {
+            background-image: url('darkdung0_50.png');
+        }
+
+        .bg-light {
+            background-image: url('superfinbeach11_60.png');
+        }
+
+        body[data-theme="dark"] .bg-dark {
+            opacity: 1;
+        }
+
+        body[data-theme="dark"] .bg-light {
+            opacity: 0;
+        }
+
+        body[data-theme="warm"] .bg-dark {
+            opacity: 0;
+        }
+
+        body[data-theme="warm"] .bg-light {
+            opacity: 1;
+        }
+
         .toggle-row {
             display: flex;
             gap: 4px;
             justify-content: flex-end;
             margin-bottom: 16px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .toggle-group {
@@ -119,6 +159,9 @@
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         h3 {
@@ -132,6 +175,9 @@
             border: 2px solid var(--color-border);
             background: var(--color-card-bg);
             margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(2px);
         }
 
         .hero .subtitle {
@@ -148,14 +194,13 @@
             border: 2px solid var(--color-border);
             padding: 16px;
             margin-bottom: 16px;
-        }
-
-        .section-card .corner {
-            display: none;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(2px);
         }
 
         .about-content p {
-            font-size: 14px;
+            font-size: 15px;
             text-align: justify;
             margin-bottom: 8px;
         }
@@ -196,13 +241,13 @@
         }
 
         .project-card p {
-            font-size: 13px;
+            font-size: 14px;
             margin-top: 4px;
             text-align: justify;
         }
 
         .project-stack-alt {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--color-link);
             opacity: 0.8;
             padding: 4px 8px;
@@ -283,6 +328,8 @@
             padding: 16px 0 8px;
             border-top: 1px solid var(--color-border);
             margin-top: 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer p {
@@ -307,6 +354,9 @@
 </head>
 
 <body data-lang="en" data-theme="dark">
+    <div class="bg-layer bg-dark"></div>
+    <div class="bg-layer bg-light"></div>
+
     <div class="toggle-row">
         <div class="toggle-group">
             <button class="active" data-lang="en" onclick="switchLang('en')">EN</button>
@@ -333,12 +383,19 @@
     <div class="section-card">
         <h2><i class="fas fa-scroll"></i> <span class="lang-en">About me</span><span class="lang-ru">Обо мне</span></h2>
         <div class="about-content">
-            <p class="lang-en">Started learning C# in 2019. In 2022 began developing "Fighters Guild" on Unity — shipped
-                on Steam April 2026. Built combat, procedural levels, inventory, quests, skills, audio, localization (4
-                languages). Open to C# developer positions.</p>
-            <p class="lang-ru">Начал изучать C# в 2019. В 2022 приступил к созданию игры "Fighters Guild" на Unity —
-                релиз в Steam апрель 2026. Реализовал боевую систему, генерацию уровней, инвентарь, квесты, навыки,
-                звук, локализацию (4 языка). Ищу позиции C# разработчика.</p>
+            <p class="lang-en">&emsp;&emsp;Started learning C# in 2019 and have been writing code in Visual Studio ever
+                since. In 2022 I began developing my own game on Unity - and in April 2026 shipped it on Steam
+                ("Fighters Guild"). In "Fighters Guild" I built from scratch: combat system, procedural level
+                generation, inventory system, quests, skills system, audio system and localization in 4
+                languages.<br>&emsp;&emsp;I consider video games a great form of entertainment. I enjoy the process of
+                making games: level design, gameplay mechanics. Open to C# developer positions: game development,
+                desktop, applied software.</p>
+            <p class="lang-ru">&emsp;&emsp;Начал изучать C# в 2019 году, с тех пор пишу код в Visual Studio. В 2022 году
+                приступил к созданию собственной игры на Unity, а в апреле 2026 выпустил её в Steam ("Fighters Guild").
+                В "Fighters Guild" реализовал с нуля: боевую систему, процедурную генерацию уровней, инвентарную
+                систему, квесты, систему скиллов, звуковую систему и локализацию на 4 языка.<br>&emsp;&emsp;Считаю
+                видеоигры отличной формой развлечения. Нравится процесс создания игр, левел-дизайн, игровые механики.
+                Рассматриваю позиции C# разработчика: gamedev, desktop, прикладное ПО.</p>
         </div>
     </div>
 
@@ -357,63 +414,83 @@
     <div class="section-card">
         <h2><i class="fas fa-trophy"></i> <span class="lang-en">Projects</span><span class="lang-ru">Проекты</span></h2>
         <div class="project-card">
-            <h3><i class="fas fa-hand-fist"></i> Fighters Guild <span style="font-size:7px;opacity:0.6;">[MAIN]</span>
-            </h3>
-            <p class="lang-en">Fantasy roguelike. Procedural raids, turn-based combat, quests. Steam (April 2026).</p>
-            <p class="lang-ru">Фэнтезийный рогалик. Процедурные рейды, пошаговые бои, квесты. Steam (апрель 2026).</p>
+            <span
+                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
+                    class="lang-en">[MAIN PROJECT]</span><span class="lang-ru">[ОСНОВНОЙ ПРОЕКТ]</span></span>
+            <h3><i class="fas fa-hand-fist"></i> Fighters Guild</h3>
+            <p class="lang-en">&emsp;&emsp;A fantasy roguelike with a simple story told through animated cutscenes and
+                dialogues. Procedural raids, guild progression, character builds, loot, turn-based combat, quests. Solo
+                dev. Zero budget. 4 years. Steam (April 2026).</p>
+            <p class="lang-ru">&emsp;&emsp;Фэнтезийный рогалик с простым сюжетом, раскрытым через анимационные ролики и
+                диалоги. Процедурные рейды, развитие гильдии, создание билдов, лут, пошаговые бои, выполнение квестов. 4
+                года соло-разработки. Нулевой бюджет разработки. Релиз в Steam (апрель 2026).</p>
+            <p class="project-stack-alt"><span class="lang-en">Programming C# · 2D/3D Art & UI · Game Design · 2D/3D
+                    Animation · Localization</span><span class="lang-ru">Программирование C# · 2D/3D-арт и UI ·
+                    Геймдизайн · 2D/3D-анимации · Локализация</span></p>
             <div class="btn-row">
                 <a href="https://store.steampowered.com/app/4581720/Fighters_Guild/" target="_blank"><i
                         class="fab fa-steam"></i> Steam</a>
                 <button onclick="toggleScreens('fgScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="fgScreens" style="display:none;">
-                <img src="FGENScr1.png" alt="1"><img src="FGENScr9.png" alt="4">
-                <img src="FGENScr2.png" alt="2"><img src="FGENScr10.png" alt="5">
-                <img src="FGENScr6.png" alt="3"><img src="FGENScr11.png" alt="6">
+                <img src="projectsscreens/FGENScr1.png" alt="1"><img src="projectsscreens/FGENScr9.png" alt="4">
+                <img src="projectsscreens/FGENScr2.png" alt="2"><img src="projectsscreens/FGENScr10.png" alt="5">
+                <img src="projectsscreens/FGENScr6.png" alt="3"><img src="projectsscreens/FGENScr11.png" alt="6">
             </div>
         </div>
         <div class="project-card">
-            <h3><i class="fas fa-dice"></i> Tavern Dice <span style="font-size:7px;opacity:0.6;">[MINI GAME]</span></h3>
-            <p class="lang-en">Dice & coin mini-game in a 3D tavern. 12 languages.</p>
-            <p class="lang-ru">Мини-игра в кости в 3D таверне. 12 языков.</p>
+            <span
+                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
+                    class="lang-en">[MINI GAME]</span><span class="lang-ru">[МИНИ-ИГРА]</span></span>
+            <h3><i class="fas fa-dice"></i> Tavern Dice</h3>
+            <p class="lang-en">A dice & coin mini-game in a 3D fantasy tavern. 12 languages supported.</p>
+            <p class="lang-ru">Мини-игра в кости и монетку в 3D таверне. Поддержка 12 языков.</p>
             <div class="btn-row">
                 <a href="https://play.unity.com/en/games/d3fb1109-ee16-4879-80b7-ce4039da7a0f/tavern-dice"
                     target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('diceScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="diceScreens" style="display:none;">
-                <img src="DiceS1.png" alt="1"><img src="DiceS3.png" alt="3">
-                <img src="DiceS2.png" alt="2"><img src="DiceS4.png" alt="4">
+                <img src="projectsscreens1/DiceS1.png" alt="1"><img src="projectsscreens1/DiceS3.png" alt="3">
+                <img src="projectsscreens1/DiceS2.png" alt="2"><img src="projectsscreens1/DiceS4.png" alt="4">
             </div>
         </div>
         <div class="project-card">
-            <h3><i class="fas fa-dungeon"></i> Dungeon Menu <span style="font-size:7px;opacity:0.6;">[CONCEPT]</span>
-            </h3>
-            <p class="lang-en">Interactive main menu - 3D environment + 2D UI. Unity.</p>
-            <p class="lang-ru">Интерактивное меню - 3D среда + 2D UI. Unity.</p>
+            <span
+                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
+                    class="lang-en">[CONCEPT]</span><span class="lang-ru">[КОНЦЕПТ]</span></span>
+            <h3><i class="fas fa-dungeon"></i> Dungeon Menu</h3>
+            <p class="lang-en">Interactive main menu blending 3D environment with 2D UI. Built in Unity.</p>
+            <p class="lang-ru">Интерактивное главное меню - 3D окружение и 2D UI. Unity.</p>
             <div class="btn-row">
                 <a href="https://play.unity.com/en/games/6214c7d1-3116-4d4c-b76a-e73d6d92cd42/dungeon-main-menu-3dui-concept"
                     target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('menuScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="menuScreens" style="display:none;">
-                <img src="mainmenu1.png" alt="1"><img src="mainmenu3.png" alt="3">
-                <img src="mainmenu2.png" alt="2"><img src="mainmenu4.png" alt="4">
+                <img src="projectsscreens2/mainmenu1.png" alt="1"><img src="projectsscreens2/mainmenu3.png" alt="3">
+                <img src="projectsscreens2/mainmenu2.png" alt="2"><img src="projectsscreens2/mainmenu4.png" alt="4">
             </div>
         </div>
         <div class="project-card">
-            <h3><i class="fas fa-circle"></i> Roll a Ball <span style="font-size:7px;opacity:0.6;">[LEARNING]</span>
-            </h3>
-            <p class="lang-en">Unity tutorial with custom level, HP system, crystals.</p>
-            <p class="lang-ru">Туториал Unity с кастомным уровнем, HP, кристаллами.</p>
+            <span
+                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
+                    class="lang-en">[LEARNING]</span><span class="lang-ru">[ОБУЧЕНИЕ]</span></span>
+            <h3><i class="fas fa-circle"></i> Roll a Ball</h3>
+            <p class="lang-en">Classic Unity tutorial, expanded with a custom level, HP system, and healing/damage
+                crystal pickups.</p>
+            <p class="lang-ru">Классический туториал Unity с кастомным уровнем, системой здоровья, кристаллами лечения и
+                урона.</p>
             <div class="btn-row">
                 <a href="https://play.unity.com/en/games/154f173d-8b28-4cf1-9180-d12ad8c38dae/roll-a-ball-custom-level-design"
                     target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('rollScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="rollScreens" style="display:none;">
-                <img src="rollscreens1.png" alt="1"><img src="rollscreens2.png" alt="2">
-                <img src="rollscreens3.png" alt="3"><img src="rollscreens4.png" alt="4">
+                <img src="projectsscreens3/rollscreens1.png" alt="1"><img src="projectsscreens3/rollscreens2.png"
+                    alt="2">
+                <img src="projectsscreens3/rollscreens3.png" alt="3"><img src="projectsscreens3/rollscreens4.png"
+                    alt="4">
             </div>
         </div>
     </div>
@@ -429,7 +506,7 @@
             <a href="https://play.unity.com/en/user/e2ff9078-b6a2-47f1-9edb-48536f260164" target="_blank"><i
                     class="fab fa-unity"></i> Unity Play</a>
             <a href="https://learn.unity.com/u/602e190bedbc2a259f8362ad" target="_blank"><i
-                    class="fas fa-graduation-cap"></i> Unity Learn</a>
+                    class="fas fa-graduation-cap"></i> Unity Learning</a>
         </div>
     </div>
 
@@ -460,17 +537,16 @@
             e.preventDefault();
             var email = 'timurr1@gmail.com';
             var ta = document.createElement('textarea');
-            ta.value = email;
-            document.body.appendChild(ta);
-            ta.select();
+            ta.value = email; document.body.appendChild(ta); ta.select();
             try { document.execCommand('copy'); } catch (err) { }
             document.body.removeChild(ta);
-            var msg = document.createElement('div');
             var lang = document.body.getAttribute('data-lang') || 'en';
-            msg.textContent = lang === 'ru' ? 'адрес почты ' + email + ' скопирован' : 'email ' + email + ' copied';
-            msg.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:Crimson Text,serif;font-size:14px;padding:12px 18px;border:2px solid var(--color-accent);z-index:999;text-align:center;border-radius:4px;';
+            var msgText = lang === 'ru' ? 'адрес почты ' + email + ' скопирован в буфер обмена' : 'email ' + email + ' copied to clipboard';
+            var msg = document.createElement('div');
+            msg.textContent = msgText;
+            msg.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:Crimson Text,serif;font-size:16px;padding:14px 22px;border:2px solid var(--color-accent);z-index:9999;text-align:center;line-height:1.4;';
             document.body.appendChild(msg);
-            setTimeout(function () { msg.remove(); }, 2500);
+            setTimeout(function () { msg.remove(); }, 3000);
         }
         (function () {
             var l = localStorage.getItem('portfolio-lang');
