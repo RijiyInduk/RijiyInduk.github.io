@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev — Dungeon Portfolio</title>
     <script>
-        // Redirect to mobile version on small screens
         if (window.innerWidth <= 768 || 'ontouchstart' in window) {
             window.location.replace('mobile.html');
         }
@@ -14,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -93,7 +92,7 @@
         }
 
         body {
-            font-family: 'Crimson Text', Georgia, serif;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
             background: var(--bg-body);
             color: var(--color-text);
             line-height: 1.7;
@@ -206,7 +205,7 @@
         }
 
         p {
-            font-size: clamp(20px, 1.2vw, 26px);
+            font-size: clamp(15px, 1.1vw, 18px);
             color: var(--color-text-secondary);
             transition: color 0.4s ease;
         }
@@ -458,7 +457,7 @@
         }
 
         .about-content p {
-            font-size: clamp(15px, 1.2vw, 18px);
+            font-size: clamp(14px, 1.1vw, 17px);
             text-align: justify;
         }
 
@@ -554,7 +553,7 @@
         }
 
         .project-card p {
-            font-size: clamp(14px, 1vw, 16px);
+            font-size: clamp(13px, 1vw, 16px);
             margin-top: 4px;
             text-align: justify;
         }
@@ -628,7 +627,6 @@
             opacity: 0.8;
         }
 
-        /* Screenshot button */
         .screenshot-btn {
             position: absolute;
             bottom: 8px;
@@ -658,7 +656,6 @@
             font-size: 10px;
         }
 
-        /* Overlay */
         .fg-overlay {
             position: fixed;
             inset: 0;
@@ -844,8 +841,6 @@
             .hero .subtitle {
                 font-size: clamp(8px, 2.2vw, 11px);
                 word-break: keep-all;
-                overflow-wrap: break-word;
-                hyphens: auto;
             }
 
             .section-card {
@@ -892,22 +887,7 @@
             }
 
             .fg-overlay {
-                display: flex !important;
-            }
-
-            .fg-overlay .close-btn {
-                right: 8px;
-                top: 8px;
-                transform: none;
-                width: 40px;
-                height: 40px;
-                border: 2px solid var(--color-accent);
-                font-size: 0;
-            }
-
-            .fg-overlay .close-btn::after {
-                font-size: 28px;
-                margin-top: 0;
+                display: none !important;
             }
 
             .project-card .quest-marker {
@@ -965,16 +945,16 @@
                     ever since. In 2022 I began developing my own game on Unity - and in April 2026 shipped it on Steam
                     ("Fighters Guild"). In "Fighters Guild" I built from scratch: combat system, procedural level
                     generation, inventory system, quests, skills system, audio system and localization in 4
-                    languages.<br>&emsp;&emsp;I consider video games a great form of entertainment. I enjoy the process
-                    of making games: level design, gameplay mechanics. Open to C# developer positions: game development,
-                    desktop, applied software.</p>
+                    languages. I consider video games a great form of entertainment. I enjoy the game
+                    development process, programming, level design, and game mechanics.<br>&emsp;&emsp;Open to C#
+                    developer positions: game development, desktop, applied software.</p>
                 <p class="lang-ru">&emsp;&emsp;Начал изучать C# в 2019 году, с тех пор пишу код в Visual Studio. В 2022
                     году приступил к созданию собственной игры на Unity, а в апреле 2026 выпустил её в Steam ("Fighters
                     Guild"). В "Fighters Guild" реализовал с нуля: боевую систему, процедурную генерацию уровней,
                     инвентарную систему, квесты, систему скиллов, звуковую систему и локализацию на 4
-                    языка.<br>&emsp;&emsp;Считаю видеоигры отличной формой развлечения. Нравится процесс создания игр,
-                    левел-дизайн, игровые механики. Рассматриваю позиции C# разработчика: gamedev, desktop, прикладное
-                    ПО.</p>
+                    языка. Считаю видеоигры отличной формой развлечения. Нравится процесс создания игр,
+                    программирование, левел-дизайн, игровые механики. <br>&emsp;&emsp;Рассматриваю позиции C#
+                    разработчика: gamedev, desktop, прикладное ПО.</p>
             </div>
         </section>
         <section class="section-card">
@@ -1017,8 +997,7 @@
                         2026).</p>
                     <p class="project-stack-alt"><span class="lang-en">Programming C# · 2D/3D Art & UI · Game Design ·
                             2D/3D Animation · Localization</span><span class="lang-ru">Программирование C# · 2D/3D-арт и
-                            UI
-                            · Геймдизайн · 2D/3D-анимации · Локализация</span></p>
+                            UI · Геймдизайн · 2D/3D-анимации · Локализация</span></p>
                     <div class="project-links"><a href="https://store.steampowered.com/app/4581720/Fighters_Guild/"
                             target="_blank" rel="noopener"><i class="fab fa-steam"></i> Steam</a></div>
                     <button class="screenshot-btn" onclick="showScreenshots()"><i class="fas fa-images"></i><span
@@ -1092,46 +1071,42 @@
             <p>&copy; 2026 Timur Idiiatullin</p>
         </footer>
     </div>
-    <!-- Overlay -->
     <div class="fg-overlay" id="fgOverlay" onclick="closeOverlay(event)">
         <div class="grid">
             <button class="close-btn" onclick="hideScreenshots()">&#10005;</button>
-            <img src="projectsscreens/FGENScr1.png" alt="1" class="screenshot-item">
-            <img src="projectsscreens/FGENScr9.png" alt="4" class="screenshot-item">
-            <img src="projectsscreens/FGENScr2.png" alt="2" class="screenshot-item">
-            <img src="projectsscreens/FGENScr10.png" alt="5" class="screenshot-item">
-            <img src="projectsscreens/FGENScr6.png" alt="3" class="screenshot-item">
-            <img src="projectsscreens/FGENScr11.png" alt="6" class="screenshot-item">
+            <img src="FGENScr1.png" alt="1" class="screenshot-item">
+            <img src="FGENScr9.png" alt="4" class="screenshot-item">
+            <img src="FGENScr2.png" alt="2" class="screenshot-item">
+            <img src="FGENScr10.png" alt="5" class="screenshot-item">
+            <img src="FGENScr6.png" alt="3" class="screenshot-item">
+            <img src="FGENScr11.png" alt="6" class="screenshot-item">
         </div>
     </div>
-    <!-- Dice overlay -->
     <div class="fg-overlay" id="diceOverlay" onclick="closeDiceOverlay(event)">
         <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
             <button class="close-btn" onclick="hideDiceScreenshots()">&#10005;</button>
-            <img src="projectsscreens1/DiceS1.png" alt="dice1" class="screenshot-item">
-            <img src="projectsscreens1/DiceS3.png" alt="dice3" class="screenshot-item">
-            <img src="projectsscreens1/DiceS2.png" alt="dice2" class="screenshot-item">
-            <img src="projectsscreens1/DiceS4.png" alt="dice4" class="screenshot-item">
+            <img src="DiceS1.png" alt="dice1" class="screenshot-item">
+            <img src="DiceS3.png" alt="dice3" class="screenshot-item">
+            <img src="DiceS2.png" alt="dice2" class="screenshot-item">
+            <img src="DiceS4.png" alt="dice4" class="screenshot-item">
         </div>
     </div>
-    <!-- Menu overlay -->
     <div class="fg-overlay" id="menuOverlay" onclick="closeMenuOverlay(event)">
         <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
             <button class="close-btn" onclick="hideMenuScreenshots()">&#10005;</button>
-            <img src="projectsscreens2/mainmenu1.png" alt="menu1" class="screenshot-item">
-            <img src="projectsscreens2/mainmenu3.png" alt="menu3" class="screenshot-item">
-            <img src="projectsscreens2/mainmenu2.png" alt="menu2" class="screenshot-item">
-            <img src="projectsscreens2/mainmenu4.png" alt="menu4" class="screenshot-item">
+            <img src="mainmenu1.png" alt="menu1" class="screenshot-item">
+            <img src="mainmenu3.png" alt="menu3" class="screenshot-item">
+            <img src="mainmenu2.png" alt="menu2" class="screenshot-item">
+            <img src="mainmenu4.png" alt="menu4" class="screenshot-item">
         </div>
     </div>
-    <!-- Roll overlay -->
     <div class="fg-overlay" id="rollOverlay" onclick="closeRollOverlay(event)">
         <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
             <button class="close-btn" onclick="hideRollScreenshots()">&#10005;</button>
-            <img src="projectsscreens3/rollscreens1.png" alt="roll1" class="screenshot-item">
-            <img src="projectsscreens3/rollscreens2.png" alt="roll3" class="screenshot-item">
-            <img src="projectsscreens3/rollscreens3.png" alt="roll2" class="screenshot-item">
-            <img src="projectsscreens3/rollscreens4.png" alt="roll4" class="screenshot-item">
+            <img src="rollscreens1.png" alt="roll1" class="screenshot-item">
+            <img src="rollscreens2.png" alt="roll3" class="screenshot-item">
+            <img src="rollscreens3.png" alt="roll2" class="screenshot-item">
+            <img src="rollscreens4.png" alt="roll4" class="screenshot-item">
         </div>
     </div>
     <script>
@@ -1140,75 +1115,25 @@
         function showScreenshots() { var o = document.getElementById('fgOverlay'); if (o) o.classList.add('show') }
         function hideScreenshots() { var o = document.getElementById('fgOverlay'); if (o) o.classList.remove('show') }
         function closeOverlay(e) { if (e.target === e.currentTarget) hideScreenshots() }
-        function toggleDiceScreenshots() {
-            var o = document.getElementById('diceOverlay');
-            if (!o) return;
-            if (o.classList.contains('show')) {
-                o.classList.remove('show');
-            } else {
-                o.classList.add('show');
-            }
-        }
-        function hideDiceScreenshots() {
-            var o = document.getElementById('diceOverlay');
-            if (o) o.classList.remove('show');
-        }
-        function closeDiceOverlay(e) {
-            if (e.target === e.currentTarget) hideDiceScreenshots();
-        }
-        function toggleMenuScreenshots() {
-            var o = document.getElementById('menuOverlay');
-            if (!o) return;
-            if (o.classList.contains('show')) {
-                o.classList.remove('show');
-            } else {
-                o.classList.add('show');
-            }
-        }
-        function hideMenuScreenshots() {
-            var o = document.getElementById('menuOverlay');
-            if (o) o.classList.remove('show');
-        }
-        function closeMenuOverlay(e) {
-            if (e.target === e.currentTarget) hideMenuScreenshots();
-        }
-        function toggleRollScreenshots() {
-            var o = document.getElementById('rollOverlay');
-            if (!o) return;
-            if (o.classList.contains('show')) {
-                o.classList.remove('show');
-            } else {
-                o.classList.add('show');
-            }
-        }
-        function hideRollScreenshots() {
-            var o = document.getElementById('rollOverlay');
-            if (o) o.classList.remove('show');
-        }
-        function closeRollOverlay(e) {
-            if (e.target === e.currentTarget) hideRollScreenshots();
-        }
+        function toggleDiceScreenshots() { var o = document.getElementById('diceOverlay'); if (!o) return; if (o.classList.contains('show')) { o.classList.remove('show') } else { o.classList.add('show') } }
+        function hideDiceScreenshots() { var o = document.getElementById('diceOverlay'); if (o) o.classList.remove('show') }
+        function closeDiceOverlay(e) { if (e.target === e.currentTarget) hideDiceScreenshots() }
+        function toggleMenuScreenshots() { var o = document.getElementById('menuOverlay'); if (!o) return; if (o.classList.contains('show')) { o.classList.remove('show') } else { o.classList.add('show') } }
+        function hideMenuScreenshots() { var o = document.getElementById('menuOverlay'); if (o) o.classList.remove('show') }
+        function closeMenuOverlay(e) { if (e.target === e.currentTarget) hideMenuScreenshots() }
+        function toggleRollScreenshots() { var o = document.getElementById('rollOverlay'); if (!o) return; if (o.classList.contains('show')) { o.classList.remove('show') } else { o.classList.add('show') } }
+        function hideRollScreenshots() { var o = document.getElementById('rollOverlay'); if (o) o.classList.remove('show') }
+        function closeRollOverlay(e) { if (e.target === e.currentTarget) hideRollScreenshots() }
         function copyEmail(e) {
-            e.preventDefault();
-            var email = 'timurr1@gmail.com';
-            // Copy to clipboard
-            var textarea = document.createElement('textarea');
-            textarea.value = email;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try { document.execCommand('copy'); } catch (err) { }
-            document.body.removeChild(textarea);
-            // Choose message based on current language
+            e.preventDefault(); var email = 'timurr1@gmail.com';
+            var ta = document.createElement('textarea'); ta.value = email; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch (err) { } document.body.removeChild(ta);
             var lang = document.body.getAttribute('data-lang') || 'en';
-            var msgText = (lang === 'ru')
-                ? 'адрес почты ' + email + ' скопирован в буфер обмена'
-                : 'email ' + email + ' copied to clipboard';
-            // Show notification
+            var msgText = lang === 'ru' ? 'адрес почты ' + email + ' скопирован в буфер обмена' : 'email ' + email + ' copied to clipboard';
             var msg = document.createElement('div');
             msg.textContent = msgText;
-            msg.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:\'Crimson Text\',Georgia,serif;font-size:18px;padding:18px 26px;border:3px solid var(--color-accent);z-index:9999;text-align:center;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
-            document.body.appendChild(msg);
-            setTimeout(function () { msg.remove(); }, 3000);
+            msg.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:\'IBM Plex Mono\',monospace;font-size:14px;padding:18px 26px;border:3px solid var(--color-accent);z-index:9999;text-align:center;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
+            document.body.appendChild(msg); setTimeout(function () { msg.remove(); }, 3000);
         }
         (function () { var l = localStorage.getItem('portfolio-lang'); if (l === 'ru' || l === 'en') switchLang(l); var t = localStorage.getItem('portfolio-theme'); if (t === 'dark' || t === 'warm') switchTheme(t); else switchTheme('dark') })();
     </script>
