@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev — Dungeon Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #1e1814;
+            --color-text: #d6c9b8;
+            --color-text-secondary: #b8a898;
+            --color-heading: #ede0cc;
+            --color-heading-shadow: 0 0 6px rgba(180, 140, 70, 0.12), 0 2px 0 #0a0705;
+            --color-accent: #c8a44a;
+            --color-accent-light: #f0d080;
+            --color-accent-glow: rgba(200, 164, 74, 0.3);
+            --color-link: #dbb35a;
+            --color-link-hover: #f5d890;
+            --color-border: #3d322a;
+            --color-border-light: #4d3f35;
+            --color-border-hover: #6a5545;
+            --color-card-bg: rgba(30, 24, 20, 0.88);
+            --color-item-bg: rgba(40, 32, 26, 0.85);
+            --color-item-hover: rgba(55, 44, 36, 0.9);
+            --color-footer: #6a5a4a;
+            --color-footer-border: #3a2e26;
+            --card-corner-opacity: 0.25;
+            --divider-color: #4d3f35;
+            --divider-icon: #7a6a5a;
+            --subtitle-color: #c8a44a;
+            --desc-color: #b0a090;
+            --toggle-bg: rgba(30, 24, 20, 0.8);
+            --toggle-btn-inactive: #8a7a6a;
+            --scrollbar-track: #1e1814;
+            --scrollbar-thumb: #4d3f35;
+        }
+
+        body[data-theme="warm"] {
+            --bg-body: #faf5ee;
+            --color-text: #4a3a2e;
+            --color-text-secondary: #6a5a4a;
+            --color-heading: #2d1f14;
+            --color-heading-shadow: 0 0 6px rgba(200, 120, 40, 0.08), 0 2px 0 rgba(0, 0, 0, 0.02);
+            --color-accent: #c86a2a;
+            --color-accent-light: #e8883a;
+            --color-accent-glow: rgba(200, 106, 42, 0.25);
+            --color-link: #b85f1a;
+            --color-link-hover: #d4782e;
+            --color-border: #d4c0a8;
+            --color-border-light: #e0ceb8;
+            --color-border-hover: #b8a080;
+            --color-card-bg: rgba(255, 248, 230, 0.82);
+            --color-item-bg: rgba(255, 245, 225, 0.80);
+            --color-item-hover: rgba(255, 240, 215, 0.88);
+            --color-footer: #a09080;
+            --color-footer-border: #d4c0a8;
+            --card-corner-opacity: 0.4;
+            --divider-color: #b88038;
+            --divider-icon: #b88038;
+            --subtitle-color: #c86a2a;
+            --desc-color: #7a6a5a;
+            --toggle-bg: rgba(255, 252, 248, 0.85);
+            --toggle-btn-inactive: #a09080;
+            --scrollbar-track: #f0e8de;
+            --scrollbar-thumb: #c8b8a8;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--bg-body);
+            color: var(--color-text);
+            line-height: 1.7;
+            min-height: 100vh;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border: 1px solid var(--color-border);
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 0.6s ease;
+        }
+
+        .bg-dark {
+            background-image: url('darkdung0_50.png');
+        }
+
+        .bg-light {
+            background-image: url('superfinbeach11_60.png');
+        }
+
+        body[data-theme="dark"] .bg-dark {
+            opacity: 1;
+        }
+
+        body[data-theme="dark"] .bg-light {
+            opacity: 0;
+        }
+
+        body[data-theme="warm"] .bg-dark {
+            opacity: 0;
+        }
+
+        body[data-theme="warm"] .bg-light {
+            opacity: 1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .pixel-font {
+            font-family: 'Press Start 2P', monospace;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            image-rendering: pixelated;
+            color: var(--color-heading);
+            text-shadow: var(--color-heading-shadow);
+            transition: color 0.4s ease, text-shadow 0.4s ease;
+        }
+
+        h1 {
+            font-size: clamp(18px, 3.5vw, 36px);
+            line-height: 1.4;
+        }
+
+        h2 {
+            font-size: clamp(14px, 2.2vw, 22px);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--color-border-light);
+            position: relative;
+            transition: border-color 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            flex-shrink: 0;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+            box-shadow: 0 0 8px var(--color-accent-glow);
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        h3 {
+            font-size: clamp(11px, 1.3vw, 15px);
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: clamp(20px, 1.2vw, 26px);
+            color: var(--color-text-secondary);
+            transition: color 0.4s ease;
+        }
+
+        a {
+            color: var(--color-link);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--color-link-hover);
+            text-shadow: 0 0 12px var(--color-accent-glow);
+        }
+
+        .toggle-row {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            display: flex;
+            gap: 6px;
+            align-items: stretch;
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 2px;
+            background: var(--toggle-bg);
+            border: 2px solid var(--color-border-light);
+            padding: 4px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+            image-rendering: pixelated;
+            backdrop-filter: blur(4px);
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .toggle-group button {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            padding: 6px 12px;
+            border: 2px solid transparent;
+            background: transparent;
+            color: var(--toggle-btn-inactive);
+            cursor: pointer;
+            transition: all 0.2s;
+            image-rendering: pixelated;
+            white-space: nowrap;
+        }
+
+        .toggle-group button.active {
+            color: var(--color-accent-light);
+            border-color: var(--color-accent);
+            background: rgba(184, 150, 58, 0.1);
+            box-shadow: 0 0 12px var(--color-accent-glow), inset 0 0 12px var(--color-accent-glow);
+        }
+
+        .toggle-group button:hover:not(.active) {
+            color: var(--color-text);
+            border-color: var(--color-border);
+        }
+
+        .toggle-group button .theme-icon {
+            margin-right: 4px;
+            font-size: 13px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            border: 2px solid var(--color-border);
+            background: var(--color-card-bg);
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.15), 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.5s ease, border-color 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            box-shadow: 0 0 20px var(--color-accent-glow);
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .hero-icon {
+            font-size: 48px;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            filter: drop-shadow(0 0 12px var(--color-accent-glow));
+            display: block;
+            transition: color 0.4s ease, filter 0.4s ease;
+        }
+
+        .hero h1 {
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(12px, 1vw, 14px);
+            color: var(--subtitle-color);
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            opacity: 0.8;
+            transition: color 0.4s ease;
+        }
+
+        .hero .desc {
+            font-size: clamp(16px, 1.2vw, 18px);
+            color: var(--desc-color);
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            transition: color 0.4s ease;
+        }
+
+        .hero .desc i {
+            color: var(--color-link);
+        }
+
+        .dungeon-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 32px 0;
+            color: var(--divider-color);
+            font-size: 14px;
+            letter-spacing: 4px;
+            transition: color 0.4s ease;
+        }
+
+        .dungeon-divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
+            transition: background 0.4s ease;
+        }
+
+        .dungeon-divider i {
+            color: var(--divider-icon);
+            font-size: 18px;
+            transition: color 0.4s ease;
+        }
+
+        .divider-icon-dark,
+        .divider-icon-warm {
+            display: inline-block;
+            font-size: 20px !important;
+        }
+
+        .divider-icon-dark {
+            color: #b08a40 !important;
+        }
+
+        .divider-icon-warm {
+            color: #b88038 !important;
+        }
+
+        body[data-theme="dark"] .divider-icon-warm {
+            display: none !important;
+        }
+
+        body[data-theme="warm"] .divider-icon-dark {
+            display: none !important;
+        }
+
+        .section-card {
+            background: var(--color-card-bg);
+            border: 2px solid var(--color-border);
+            padding: 32px 28px;
+            margin-bottom: 28px;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: border-color 0.3s, background 0.5s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .section-card:hover {
+            border-color: var(--color-border-hover);
+        }
+
+        .section-card::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent-glow), transparent);
+            transition: background 0.4s ease;
+        }
+
+        .section-card .corner {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: var(--color-accent);
+            border-style: solid;
+            opacity: var(--card-corner-opacity);
+            transition: border-color 0.4s ease, opacity 0.4s ease;
+        }
+
+        .section-card .corner.tl {
+            top: 6px;
+            left: 6px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .section-card .corner.tr {
+            top: 6px;
+            right: 6px;
+            border-width: 2px 2px 0 0;
+        }
+
+        .section-card .corner.bl {
+            bottom: 6px;
+            left: 6px;
+            border-width: 0 0 2px 2px;
+        }
+
+        .section-card .corner.br {
+            bottom: 6px;
+            right: 6px;
+            border-width: 0 2px 2px 0;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: clamp(15px, 1.2vw, 18px);
+            text-align: justify;
+        }
+
+        .about-content .signature {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--color-accent);
+            margin-top: 8px;
+            letter-spacing: 1px;
+            transition: color 0.4s ease;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: var(--color-item-bg);
+            border: 1px solid var(--color-border);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.25s;
+            cursor: default;
+            position: relative;
+        }
+
+        .skill-item:hover {
+            border-color: var(--color-accent);
+            background: var(--color-item-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--color-accent-glow);
+        }
+
+        .skill-item i {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+            color: var(--color-accent);
+        }
+
+        .skill-item .skill-name {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            color: var(--color-text);
+            letter-spacing: 1px;
+        }
+
+        .skill-item .skill-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            width: 0%;
+            transition: width 0.8s ease, background 0.4s ease;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--color-item-bg);
+            border: 1px solid var(--color-border);
+            padding: 20px 22px 40px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent);
+            background: var(--color-item-hover);
+            transform: translateX(4px);
+            box-shadow: -4px 0 16px var(--color-accent-glow);
+        }
+
+        .project-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(10px, 1.1vw, 13px);
+        }
+
+        .project-card h3 i {
+            color: var(--color-accent);
+            font-size: 14px;
+        }
+
+        .project-card p {
+            font-size: clamp(14px, 1vw, 16px);
+            margin-top: 4px;
+            text-align: justify;
+        }
+
+        .project-card .project-links {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            display: flex;
+            gap: 16px;
+            margin-top: 0;
+            z-index: 5;
+        }
+
+        .project-card .project-links a {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 4px 10px;
+            border: 1px solid var(--color-border);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-card .project-links a:hover {
+            border-color: var(--color-accent);
+            background: rgba(184, 150, 58, 0.08);
+        }
+
+        .project-features {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 8px;
+        }
+
+        .project-features li {
+            font-size: clamp(13px, 0.9vw, 15px);
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            transition: color 0.4s ease;
+        }
+
+        .project-stack {
+            font-size: clamp(12px, 0.85vw, 14px);
+            color: var(--color-accent);
+            opacity: 0.75;
+            margin-bottom: 10px;
+            transition: color 0.4s ease, opacity 0.4s ease;
+        }
+
+        .project-stack-alt {
+            font-size: clamp(12px, 0.85vw, 14px);
+            color: var(--color-link);
+            opacity: 0.8;
+            margin: 8px 0 10px;
+            padding: 6px 10px;
+            border-left: 3px solid var(--color-accent);
+            background: var(--color-item-bg);
+            text-align: justify;
+            transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .project-card .quest-marker {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            color: var(--color-accent);
+            opacity: 0.8;
+        }
+
+        /* Screenshot button */
+        .screenshot-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            padding: 6px 10px;
+            border: 1px solid var(--color-accent);
+            background: var(--color-item-bg);
+            color: var(--color-accent);
+            cursor: pointer;
+            transition: all 0.25s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .screenshot-btn:hover {
+            background: var(--color-item-hover);
+            border-color: var(--color-accent-light);
+            color: var(--color-accent-light);
+            box-shadow: 0 0 12px var(--color-accent-glow);
+        }
+
+        .screenshot-btn i {
+            font-size: 10px;
+        }
+
+        /* Overlay */
+        .fg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .fg-overlay.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .fg-overlay .grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, auto);
+            gap: 12px;
+            background: var(--color-card-bg);
+            border: 2px solid var(--color-accent);
+            padding: 16px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            max-width: 92vw;
+            max-height: 92vh;
+        }
+
+        .fg-overlay .close-btn {
+            position: absolute;
+            right: -104px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 96px;
+            height: 96px;
+            border: 4px solid var(--color-accent);
+            background: var(--color-card-bg);
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 10;
+            padding: 0;
+            font-size: 0;
+        }
+
+        .fg-overlay .close-btn::after {
+            content: '\00D7';
+            font-size: 72px;
+            font-family: serif;
+            line-height: 1;
+            display: block;
+            margin-top: -6px;
+        }
+
+        .fg-overlay .close-btn:hover {
+            background: var(--color-accent);
+            color: #000;
+        }
+
+        .fg-overlay .screenshot-item {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--color-border-light);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            max-height: calc((92vh - 80px) / 3);
+            object-fit: contain;
+        }
+
+        .fg-overlay.show .screenshot-item {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(2) {
+            transition-delay: 0.10s;
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(4) {
+            transition-delay: 0.20s;
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .fg-overlay.show .screenshot-item:nth-child(6) {
+            transition-delay: 0.30s;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-links a {
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(8px, 0.9vw, 11px);
+            padding: 10px 18px;
+            border: 2px solid var(--color-border);
+            background: var(--color-item-bg);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--color-accent);
+            background: var(--color-item-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--color-accent-glow);
+        }
+
+        .contact-links a i {
+            font-size: 16px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 20px 20px;
+            border-top: 1px solid var(--color-footer-border);
+            margin-top: 20px;
+            transition: border-color 0.4s ease;
+        }
+
+        .footer p {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            color: var(--color-footer);
+            letter-spacing: 2px;
+            transition: color 0.4s ease;
+        }
+
+        .lang-en,
+        .lang-ru {
+            transition: opacity 0.3s ease;
+        }
+
+        body[data-lang="en"] .lang-ru {
+            display: none !important;
+        }
+
+        body[data-lang="ru"] .lang-en {
+            display: none !important;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 48px 12px 30px;
+            }
+
+            .hero {
+                padding: 36px 14px 28px;
+            }
+
+            .hero-icon {
+                font-size: 36px;
+            }
+
+            .section-card {
+                padding: 22px 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .skill-item {
+                padding: 10px 12px;
+            }
+
+            .skill-item .skill-name {
+                font-size: 7px;
+            }
+
+            .contact-links a {
+                font-size: 9px;
+                padding: 8px 14px;
+            }
+
+            .toggle-row {
+                top: 10px;
+                right: 10px;
+                gap: 4px;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .toggle-group {
+                padding: 3px;
+            }
+
+            .toggle-group button {
+                font-size: 9px;
+                padding: 4px 8px;
+            }
+
+            .toggle-group button .theme-icon {
+                font-size: 11px;
+            }
+
+            .fg-overlay {
+                display: none !important;
+            }
+
+            .project-card .quest-marker {
+                display: none;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-lang="en" data-theme="dark">
+    <div class="bg-layer bg-dark"></div>
+    <div class="bg-layer bg-light"></div>
+    <div class="toggle-row">
+        <div class="toggle-group">
+            <button class="active" data-lang="en" onclick="switchLang('en')">EN</button>
+            <button data-lang="ru" onclick="switchLang('ru')">RU</button>
+        </div>
+        <div class="toggle-group">
+            <button class="active" data-theme-btn="dark" onclick="switchTheme('dark')">
+                <i class="fas fa-moon" style="font-size:13px;margin-right:4px;color:#a0a0b8;"></i>Dungeon
+            </button>
+            <button data-theme-btn="warm" onclick="switchTheme('warm')">
+                <i class="fas fa-sun" style="font-size:13px;margin-right:4px;color:#f5a623;"></i>Sunset
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <section class="hero">
+            <span class="hero-icon">&#9876;</span>
+            <h1><span class="lang-en">Timur Idiiatullin</span><span class="lang-ru">Тимур Идиятуллин</span></h1>
+            <div class="subtitle"><span class="lang-en">[ C# Programming ]</span><span class="lang-ru">[ C#
+                    Программирование ]</span></div>
+            <div class="subtitle"><span class="lang-en">[ Solo Unity Developer ]</span><span class="lang-ru">[ Соло
+                    Unity Разработчик ]</span></div>
+        </section>
+        <div class="dungeon-divider">
+            <span class="line"></span>
+            <i class="fas fa-star divider-icon-dark"></i>
+            <i class="fas fa-sun divider-icon-warm"></i>
+            <span class="line"></span>
+        </div>
+        <section class="section-card">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span
+                class="corner br"></span>
+            <h2><i class="fas fa-scroll"></i><span class="lang-en">About me</span><span class="lang-ru">Обо мне</span>
+            </h2>
+            <div class="about-content">
+                <p class="lang-en">&emsp;&emsp;Started learning C# in 2019 and have been writing code in Visual Studio
+                    ever since. In 2022 I began developing my own game on Unity - and in April 2026 shipped it on Steam
+                    ("Fighters Guild"). In "Fighters Guild" I built from scratch: combat system, procedural level
+                    generation, inventory system, quests, skills system, audio system and localization in 4
+                    languages.<br>&emsp;&emsp;I consider video games a great form of entertainment. I enjoy the process
+                    of making games: level design, gameplay mechanics. Open to C# developer positions: game development,
+                    desktop, applied software.</p>
+                <p class="lang-ru">&emsp;&emsp;Начал изучать C# в 2019 году, с тех пор пишу код в Visual Studio. В 2022
+                    году приступил к созданию собственной игры на Unity, а в апреле 2026 выпустил её в Steam ("Fighters
+                    Guild"). В "Fighters Guild" реализовал с нуля: боевую систему, процедурную генерацию уровней,
+                    инвентарную систему, квесты, систему скиллов, звуковую систему и локализацию на 4
+                    языка.<br>&emsp;&emsp;Считаю видеоигры отличной формой развлечения. Нравится процесс создания игр,
+                    левел-дизайн, игровые механики. Рассматриваю позиции C# разработчика: gamedev, desktop, прикладное
+                    ПО.</p>
+            </div>
+        </section>
+        <section class="section-card">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span
+                class="corner br"></span>
+            <h2><i class="fas fa-tools"></i><span class="lang-en">Skills</span><span class="lang-ru">Навыки</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fas fa-code"></i><span class="skill-name">C#</span><span
+                        class="skill-bar" style="width:90%"></span></div>
+                <div class="skill-item"><i class="fa-solid fa-terminal"></i><span class="skill-name">Visual
+                        Studio</span><span class="skill-bar" style="width:90%"></span></div>
+                <div class="skill-item"><i class="fab fa-unity"></i><span class="skill-name">Unity 2022</span><span
+                        class="skill-bar" style="width:90%"></span></div>
+                <div class="skill-item"><i class="fas fa-wand-magic-sparkles"></i><span class="skill-name">Stable
+                        Diffusion</span><span class="skill-bar" style="width:80%"></span></div>
+                <div class="skill-item"><i class="fas fa-cube"></i><span class="skill-name">Blender</span><span
+                        class="skill-bar" style="width:50%"></span></div>
+                <div class="skill-item"><i class="fas fa-paint-brush"></i><span class="skill-name">Krita</span><span
+                        class="skill-bar" style="width:50%"></span></div>
+                <div class="skill-item"><i class="fas fa-film"></i><span class="skill-name">CapCut</span><span
+                        class="skill-bar" style="width:50%"></span></div>
+            </div>
+        </section>
+        <section class="section-card">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span
+                class="corner br"></span>
+            <h2><i class="fas fa-trophy"></i><span class="lang-en">Projects</span><span class="lang-ru">Проекты</span>
+            </h2>
+            <div class="project-list">
+                <div class="project-card">
+                    <span class="quest-marker"><span class="lang-en">[MAIN PROJECT]</span><span
+                            class="lang-ru">[ОСНОВНОЙ ПРОЕКТ]</span></span>
+                    <h3><i class="fas fa-hand-fist"></i> Fighters Guild</h3>
+                    <p class="lang-en">&emsp;&emsp;A fantasy roguelike with a simple story told through animated
+                        cutscenes and dialogues. Procedural raids, guild progression, character builds, loot, turn-based
+                        combat, quests. Solo dev. Zero budget. 4 years. Steam (April 2026).</p>
+                    <p class="lang-ru">&emsp;&emsp;Фэнтезийный рогалик с простым сюжетом, раскрытым через анимационные
+                        ролики и диалоги. Процедурные рейды, развитие гильдии, создание билдов, лут, пошаговые бои,
+                        выполнение квестов. 4 года соло-разработки. Нулевой бюджет разработки. Релиз в Steam (апрель
+                        2026).</p>
+                    <p class="project-stack-alt"><span class="lang-en">Programming C# · 2D/3D Art & UI · Game Design ·
+                            2D/3D Animation · Localization</span><span class="lang-ru">Программирование C# · 2D/3D-арт и
+                            UI
+                            · Геймдизайн · 2D/3D-анимации · Локализация</span></p>
+                    <div class="project-links"><a href="https://store.steampowered.com/app/4581720/Fighters_Guild/"
+                            target="_blank" rel="noopener"><i class="fab fa-steam"></i> Steam</a></div>
+                    <button class="screenshot-btn" onclick="showScreenshots()"><i class="fas fa-images"></i><span
+                            class="lang-en">Screenshots</span><span class="lang-ru">Скриншоты</span></button>
+                </div>
+                <div class="project-card">
+                    <span class="quest-marker"><span class="lang-en">[MINI GAME]</span><span
+                            class="lang-ru">[МИНИ-ИГРА]</span></span>
+                    <h3><i class="fas fa-dice"></i> Tavern Dice</h3>
+                    <p class="lang-en">A dice & coin mini-game in a 3D fantasy tavern. 12 languages supported.</p>
+                    <p class="lang-ru">Мини-игра в кости и монетку в 3D таверне. Поддержка 12 языков.</p>
+                    <div class="project-links"><a
+                            href="https://play.unity.com/en/games/d3fb1109-ee16-4879-80b7-ce4039da7a0f/tavern-dice"
+                            target="_blank" rel="noopener"><i class="fab fa-unity"></i> Play</a></div>
+                    <button class="screenshot-btn" onclick="toggleDiceScreenshots()"><i class="fas fa-images"></i><span
+                            class="lang-en">Screenshots</span><span class="lang-ru">Скриншоты</span></button>
+                </div>
+                <div class="project-card">
+                    <span class="quest-marker"><span class="lang-en">[CONCEPT]</span><span
+                            class="lang-ru">[КОНЦЕПТ]</span></span>
+                    <h3><i class="fas fa-dungeon"></i> Dungeon Menu</h3>
+                    <p class="lang-en">Interactive main menu blending 3D environment with 2D UI. Built in Unity.</p>
+                    <p class="lang-ru">Интерактивное главное меню - 3D окружение и 2D UI. Unity.</p>
+                    <div class="project-links"><a
+                            href="https://play.unity.com/en/games/6214c7d1-3116-4d4c-b76a-e73d6d92cd42/dungeon-main-menu-3dui-concept"
+                            target="_blank" rel="noopener"><i class="fab fa-unity"></i> Play</a></div>
+                    <button class="screenshot-btn" onclick="toggleMenuScreenshots()"><i class="fas fa-images"></i><span
+                            class="lang-en">Screenshots</span><span class="lang-ru">Скриншоты</span></button>
+                </div>
+                <div class="project-card">
+                    <span class="quest-marker"><span class="lang-en">[LEARNING]</span><span
+                            class="lang-ru">[ОБУЧЕНИЕ]</span></span>
+                    <h3><i class="fas fa-circle"></i> Roll a Ball</h3>
+                    <p class="lang-en">Classic Unity tutorial, expanded with a custom level, HP system, and
+                        healing/damage crystal pickups.</p>
+                    <p class="lang-ru">Классический туториал Unity с кастомным уровнем, системой здоровья, кристаллами
+                        лечения и урона.</p>
+                    <div class="project-links"><a
+                            href="https://play.unity.com/en/games/154f173d-8b28-4cf1-9180-d12ad8c38dae/roll-a-ball-custom-level-design"
+                            target="_blank" rel="noopener"><i class="fab fa-unity"></i> Play</a></div>
+                    <button class="screenshot-btn" onclick="toggleRollScreenshots()"><i class="fas fa-images"></i><span
+                            class="lang-en">Screenshots</span><span class="lang-ru">Скриншоты</span></button>
+                </div>
+            </div>
+        </section>
+        <section class="section-card">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span
+                class="corner br"></span>
+            <h2><i class="fas fa-scroll"></i><span class="lang-en">Contacts</span><span class="lang-ru">Контакты</span>
+            </h2>
+            <div class="contact-links">
+                <a href="#" onclick="copyEmail(event)"><i class="fas fa-envelope"></i><span
+                        class="lang-en">Email</span><span class="lang-ru">Почта</span></a>
+                <a href="https://github.com/RigiyInduk" target="_blank" rel="noopener"><i class="fab fa-github"></i>
+                    GitHub</a>
+                <a href="https://store.steampowered.com/search/?developer=MrDrist" target="_blank" rel="noopener"><i
+                        class="fab fa-steam"></i> Steam</a>
+                <a href="https://play.unity.com/en/user/e2ff9078-b6a2-47f1-9edb-48536f260164" target="_blank"
+                    rel="noopener"><i class="fab fa-unity"></i> Unity<br>Play</a>
+                <a href="https://learn.unity.com/u/602e190bedbc2a259f8362ad" target="_blank" rel="noopener"><i
+                        class="fas fa-graduation-cap"></i> Unity<br>Learning</a>
+            </div>
+        </section>
+        <div class="dungeon-divider">
+            <span class="line"></span>
+            <i class="fas fa-star divider-icon-dark"></i>
+            <i class="fas fa-sun divider-icon-warm"></i>
+            <span class="line"></span>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2026 Timur Idiiatullin</p>
+        </footer>
+    </div>
+    <!-- Overlay -->
+    <div class="fg-overlay" id="fgOverlay" onclick="closeOverlay(event)">
+        <div class="grid">
+            <button class="close-btn" onclick="hideScreenshots()">&#10005;</button>
+            <img src="projectsscreens/FGENScr1.png" alt="1" class="screenshot-item">
+            <img src="projectsscreens/FGENScr9.png" alt="4" class="screenshot-item">
+            <img src="projectsscreens/FGENScr2.png" alt="2" class="screenshot-item">
+            <img src="projectsscreens/FGENScr10.png" alt="5" class="screenshot-item">
+            <img src="projectsscreens/FGENScr6.png" alt="3" class="screenshot-item">
+            <img src="projectsscreens/FGENScr11.png" alt="6" class="screenshot-item">
+        </div>
+    </div>
+    <!-- Dice overlay -->
+    <div class="fg-overlay" id="diceOverlay" onclick="closeDiceOverlay(event)">
+        <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
+            <button class="close-btn" onclick="hideDiceScreenshots()">&#10005;</button>
+            <img src="projectsscreens1/DiceS1.png" alt="dice1" class="screenshot-item">
+            <img src="projectsscreens1/DiceS3.png" alt="dice3" class="screenshot-item">
+            <img src="projectsscreens1/DiceS2.png" alt="dice2" class="screenshot-item">
+            <img src="projectsscreens1/DiceS4.png" alt="dice4" class="screenshot-item">
+        </div>
+    </div>
+    <!-- Menu overlay -->
+    <div class="fg-overlay" id="menuOverlay" onclick="closeMenuOverlay(event)">
+        <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
+            <button class="close-btn" onclick="hideMenuScreenshots()">&#10005;</button>
+            <img src="projectsscreens2/mainmenu1.png" alt="menu1" class="screenshot-item">
+            <img src="projectsscreens2/mainmenu3.png" alt="menu3" class="screenshot-item">
+            <img src="projectsscreens2/mainmenu2.png" alt="menu2" class="screenshot-item">
+            <img src="projectsscreens2/mainmenu4.png" alt="menu4" class="screenshot-item">
+        </div>
+    </div>
+    <!-- Roll overlay -->
+    <div class="fg-overlay" id="rollOverlay" onclick="closeRollOverlay(event)">
+        <div class="grid" style="grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,auto);">
+            <button class="close-btn" onclick="hideRollScreenshots()">&#10005;</button>
+            <img src="projectsscreens3/rollscreens1.png" alt="roll1" class="screenshot-item">
+            <img src="projectsscreens3/rollscreens2.png" alt="roll3" class="screenshot-item">
+            <img src="projectsscreens3/rollscreens3.png" alt="roll2" class="screenshot-item">
+            <img src="projectsscreens3/rollscreens4.png" alt="roll4" class="screenshot-item">
+        </div>
+    </div>
+    <script>
+        function switchLang(l) { document.body.setAttribute('data-lang', l); document.querySelectorAll('.toggle-group:first-child button').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l) }); localStorage.setItem('portfolio-lang', l) }
+        function switchTheme(t) { document.body.setAttribute('data-theme', t); document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-theme-btn') === t) }); localStorage.setItem('portfolio-theme', t) }
+        function showScreenshots() { var o = document.getElementById('fgOverlay'); if (o) o.classList.add('show') }
+        function hideScreenshots() { var o = document.getElementById('fgOverlay'); if (o) o.classList.remove('show') }
+        function closeOverlay(e) { if (e.target === e.currentTarget) hideScreenshots() }
+        function toggleDiceScreenshots() {
+            var o = document.getElementById('diceOverlay');
+            if (!o) return;
+            if (o.classList.contains('show')) {
+                o.classList.remove('show');
+            } else {
+                o.classList.add('show');
+            }
+        }
+        function hideDiceScreenshots() {
+            var o = document.getElementById('diceOverlay');
+            if (o) o.classList.remove('show');
+        }
+        function closeDiceOverlay(e) {
+            if (e.target === e.currentTarget) hideDiceScreenshots();
+        }
+        function toggleMenuScreenshots() {
+            var o = document.getElementById('menuOverlay');
+            if (!o) return;
+            if (o.classList.contains('show')) {
+                o.classList.remove('show');
+            } else {
+                o.classList.add('show');
+            }
+        }
+        function hideMenuScreenshots() {
+            var o = document.getElementById('menuOverlay');
+            if (o) o.classList.remove('show');
+        }
+        function closeMenuOverlay(e) {
+            if (e.target === e.currentTarget) hideMenuScreenshots();
+        }
+        function toggleRollScreenshots() {
+            var o = document.getElementById('rollOverlay');
+            if (!o) return;
+            if (o.classList.contains('show')) {
+                o.classList.remove('show');
+            } else {
+                o.classList.add('show');
+            }
+        }
+        function hideRollScreenshots() {
+            var o = document.getElementById('rollOverlay');
+            if (o) o.classList.remove('show');
+        }
+        function closeRollOverlay(e) {
+            if (e.target === e.currentTarget) hideRollScreenshots();
+        }
+        function copyEmail(e) {
+            e.preventDefault();
+            var email = 'timurr1@gmail.com';
+            // Copy to clipboard
+            var textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try { document.execCommand('copy'); } catch (err) { }
+            document.body.removeChild(textarea);
+            // Choose message based on current language
+            var lang = document.body.getAttribute('data-lang') || 'en';
+            var msgText = (lang === 'ru')
+                ? 'адрес почты ' + email + ' скопирован в буфер обмена'
+                : 'email ' + email + ' copied to clipboard';
+            // Show notification
+            var msg = document.createElement('div');
+            msg.textContent = msgText;
+            msg.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:\'Crimson Text\',Georgia,serif;font-size:18px;padding:18px 26px;border:3px solid var(--color-accent);z-index:9999;text-align:center;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
+            document.body.appendChild(msg);
+            setTimeout(function () { msg.remove(); }, 3000);
+        }
+        (function () { var l = localStorage.getItem('portfolio-lang'); if (l === 'ru' || l === 'en') switchLang(l); var t = localStorage.getItem('portfolio-theme'); if (t === 'dark' || t === 'warm') switchTheme(t); else switchTheme('dark') })();
+    </script>
+</body>
+
+</html>
