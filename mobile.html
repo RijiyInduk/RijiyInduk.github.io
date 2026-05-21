@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dev — Dungeon Portfolio</title>
+    <title>Timur Idiiatullin — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -26,7 +26,6 @@
             --color-link: #dbb35a;
             --color-link-hover: #f5d890;
         }
-
         body[data-theme="warm"] {
             --bg-body: #faf5ee;
             --color-text: #4a3a2e;
@@ -41,17 +40,8 @@
             --color-link: #b85f1a;
             --color-link-hover: #d4782e;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'IBM Plex Mono', 'Courier New', monospace;
             background: var(--bg-body);
@@ -61,302 +51,92 @@
             padding: 12px;
             transition: background 0.5s ease, color 0.5s ease;
         }
-
         .bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: opacity 0.6s ease;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;
+            background-size: cover; background-position: center; background-repeat: no-repeat; transition: opacity 0.6s ease;
         }
-
-        .bg-dark {
-            background-image: url('darkdung0_50.png');
-        }
-
-        .bg-light {
-            background-image: url('superfinbeach11_60.png');
-        }
-
-        body[data-theme="dark"] .bg-dark {
-            opacity: 1;
-        }
-
-        body[data-theme="dark"] .bg-light {
-            opacity: 0;
-        }
-
-        body[data-theme="warm"] .bg-dark {
-            opacity: 0;
-        }
-
-        body[data-theme="warm"] .bg-light {
-            opacity: 1;
-        }
-
+        .bg-dark { background-image: url('darkdung0_50.png'); }
+        .bg-light { background-image: url('superfinbeach11_60.png'); }
+        body[data-theme="dark"] .bg-dark { opacity: 1; }
+        body[data-theme="dark"] .bg-light { opacity: 0; }
+        body[data-theme="warm"] .bg-dark { opacity: 0; }
+        body[data-theme="warm"] .bg-light { opacity: 1; }
         .toggle-row {
-            display: flex;
-            gap: 4px;
-            justify-content: flex-end;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
+            display: flex; gap: 4px; justify-content: flex-end; margin-bottom: 16px; flex-wrap: wrap;
+            position: relative; z-index: 2;
         }
-
         .toggle-group {
-            display: flex;
-            gap: 2px;
+            display: flex; gap: 2px;
             background: var(--color-card-bg);
             border: 2px solid var(--color-border);
             padding: 3px;
             backdrop-filter: blur(4px);
         }
-
         .toggle-group button {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 9px;
-            padding: 5px 10px;
-            border: 2px solid transparent;
-            background: transparent;
-            color: #8a7a6a;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
+            font-family: 'Press Start 2P', monospace; font-size: 9px; padding: 5px 10px;
+            border: 2px solid transparent; background: transparent; color: #8a7a6a;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
         }
-
         .toggle-group button.active {
-            color: var(--color-accent-light);
-            border-color: var(--color-accent);
-            background: rgba(184, 150, 58, 0.1);
-            box-shadow: 0 0 12px var(--color-accent-glow);
+            color: var(--color-accent-light); border-color: var(--color-accent);
+            background: rgba(184, 150, 58, 0.1); box-shadow: 0 0 12px var(--color-accent-glow);
         }
-
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Press Start 2P', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-heading);
-            text-shadow: 0 0 6px rgba(180, 140, 70, 0.12);
+            text-transform: uppercase; letter-spacing: 2px;
+            color: var(--color-heading); text-shadow: 0 0 6px rgba(180, 140, 70, 0.12);
         }
-
-        h1 {
-            font-size: 14px;
-            line-height: 1.4;
-            margin-bottom: 8px;
+        h1 { font-size: 14px; line-height: 1.4; margin-bottom: 8px; }
+        h2 { font-size: 12px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--color-border); display: flex; align-items: center; gap: 6px; }
+        h3 { font-size: 10px; margin-bottom: 6px; }
+        .hero { text-align: center; padding: 24px 16px 20px; border: 2px solid var(--color-border); background: var(--color-card-bg); margin-bottom: 16px; position: relative; z-index: 1; backdrop-filter: blur(2px); }
+        .hero .subtitle { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--color-accent); letter-spacing: 2px; margin-bottom: 8px; opacity: 0.8; }
+        .section-card { background: var(--color-card-bg); border: 2px solid var(--color-border); padding: 16px; margin-bottom: 16px; position: relative; z-index: 1; backdrop-filter: blur(2px); }
+        .about-content p { font-size: 15px; text-align: justify; margin-bottom: 8px; }
+        /* Core skills */
+        .core-skills-title { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--color-accent-light); margin-bottom: 12px; }
+        .core-skills-list { display: flex; flex-direction: column; gap: 10px; }
+        .core-skill-item { background: var(--color-item-bg); border-left: 3px solid var(--color-accent); padding: 12px 14px; }
+        .core-skill-item .core-skill-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+        .core-skill-item .core-skill-header i { font-size: 14px; width: 20px; text-align: center; color: var(--color-accent); }
+        .core-skill-item .core-skill-title { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--color-accent-light); }
+        .core-skill-item .core-skill-desc { font-size: 13px; color: var(--color-text-secondary); padding-left: 28px; line-height: 1.4; }
+        /* Tools */
+        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .tools-grid .skill-item { background: var(--color-item-bg); border: 1px solid var(--color-border); padding: 8px 10px; display: flex; align-items: center; gap: 8px; }
+        .tools-grid .skill-item i { width: 16px; color: var(--color-accent); font-size: 13px; }
+        .tools-grid .skill-item .skill-name { font-family: 'Press Start 2P', monospace; font-size: 6px; color: var(--color-text); }
+        .project-card { background: var(--color-item-bg); border: 1px solid var(--color-border); padding: 12px; margin-bottom: 12px; }
+        .project-card h3 i { color: var(--color-accent); font-size: 12px; margin-right: 6px; }
+        .project-card p { font-size: 14px; margin-top: 4px; text-align: justify; }
+        .project-stack-alt { font-size: 11px; color: var(--color-link); opacity: 0.8; padding: 4px 8px; border-left: 2px solid var(--color-accent); background: var(--color-item-bg); margin: 6px 0; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .btn-row a, .btn-row button {
+            font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 5px 8px;
+            border: 1px solid var(--color-accent); background: var(--color-item-bg);
+            color: var(--color-accent); cursor: pointer; transition: all 0.2s;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
         }
-
-        h2 {
-            font-size: 12px;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--color-border);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        h3 {
-            font-size: 10px;
-            margin-bottom: 6px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 24px 16px 20px;
-            border: 2px solid var(--color-border);
-            background: var(--color-card-bg);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-
-        .hero .subtitle {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 8px;
-            color: var(--color-accent);
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            opacity: 0.8;
-        }
-
-        .section-card {
-            background: var(--color-card-bg);
-            border: 2px solid var(--color-border);
-            padding: 16px;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-
-        .about-content p {
-            font-size: 15px;
-            text-align: justify;
-            margin-bottom: 8px;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--color-item-bg);
-            border: 1px solid var(--color-border);
-            padding: 8px 10px;
-            margin-bottom: 6px;
-        }
-
-        .skill-item i {
-            width: 18px;
-            color: var(--color-accent);
-            font-size: 14px;
-        }
-
-        .skill-item .skill-name {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: var(--color-text);
-        }
-
-        .project-card {
-            background: var(--color-item-bg);
-            border: 1px solid var(--color-border);
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-
-        .project-card h3 i {
-            color: var(--color-accent);
-            font-size: 12px;
-            margin-right: 6px;
-        }
-
-        .project-card p {
-            font-size: 14px;
-            margin-top: 4px;
-            text-align: justify;
-        }
-
-        .project-stack-alt {
-            font-size: 12px;
-            color: var(--color-link);
-            opacity: 0.8;
-            padding: 4px 8px;
-            border-left: 2px solid var(--color-accent);
-            background: var(--color-item-bg);
-            margin: 6px 0;
-        }
-
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .btn-row a,
-        .btn-row button {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            padding: 5px 8px;
-            border: 1px solid var(--color-accent);
-            background: var(--color-item-bg);
-            color: var(--color-accent);
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .btn-row a:hover,
-        .btn-row button:hover {
-            background: var(--color-item-hover);
-            border-color: var(--color-accent-light);
-            color: var(--color-accent-light);
-        }
-
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-        }
-
+        .btn-row a:hover, .btn-row button:hover { background: var(--color-item-hover); border-color: var(--color-accent-light); color: var(--color-accent-light); }
+        .contact-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .contact-row a {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            padding: 6px 10px;
-            border: 2px solid var(--color-border);
-            background: var(--color-item-bg);
-            color: var(--color-link);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 6px 10px;
+            border: 2px solid var(--color-border); background: var(--color-item-bg);
+            color: var(--color-link); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
         }
-
-        .contact-row a:hover {
-            border-color: var(--color-accent);
-        }
-
-        .mobile-screenshots {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .mobile-screenshots img {
-            width: 100%;
-            height: auto;
-            border: 1px solid var(--color-border);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 16px 0 8px;
-            border-top: 1px solid var(--color-border);
-            margin-top: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer p {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #6a5a4a;
-        }
-
-        .lang-en,
-        .lang-ru {
-            transition: opacity 0.3s ease;
-        }
-
-        body[data-lang="en"] .lang-ru {
-            display: none !important;
-        }
-
-        body[data-lang="ru"] .lang-en {
-            display: none !important;
-        }
+        .contact-row a:hover { border-color: var(--color-accent); }
+        .mobile-screenshots { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+        .mobile-screenshots img { width: 100%; height: auto; border: 1px solid var(--color-border); }
+        .footer { text-align: center; padding: 16px 0 8px; border-top: 1px solid var(--color-border); margin-top: 8px; position: relative; z-index: 1; }
+        .footer p { font-family: 'Press Start 2P', monospace; font-size: 7px; color: #6a5a4a; }
+        .lang-en, .lang-ru { transition: opacity 0.3s ease; }
+        body[data-lang="en"] .lang-ru { display: none !important; }
+        body[data-lang="ru"] .lang-en { display: none !important; }
     </style>
 </head>
-
 <body data-lang="en" data-theme="dark">
     <div class="bg-layer bg-dark"></div>
     <div class="bg-layer bg-light"></div>
-
     <div class="toggle-row">
         <div class="toggle-group">
             <button class="active" data-lang="en" onclick="switchLang('en')">EN</button>
@@ -371,66 +151,51 @@
             </button>
         </div>
     </div>
-
     <div class="hero">
         <h1><span class="lang-en">Timur Idiiatullin</span><span class="lang-ru">Тимур Идиятуллин</span></h1>
-        <div class="subtitle"><span class="lang-en">[ C# Programming ]</span><span class="lang-ru">[ C# Программирование
-                ]</span></div>
-        <div class="subtitle"><span class="lang-en">[ Solo Unity Developer ]</span><span class="lang-ru">[ Соло Unity
-                Разработчик ]</span></div>
+        <div class="subtitle"><span class="lang-en">[ C# Programming ]</span><span class="lang-ru">[ C# Программирование ]</span></div>
+        <div class="subtitle"><span class="lang-en">[ Solo Unity Developer ]</span><span class="lang-ru">[ Соло Unity Разработчик ]</span></div>
     </div>
-
     <div class="section-card">
         <h2><i class="fas fa-scroll"></i> <span class="lang-en">About me</span><span class="lang-ru">Обо мне</span></h2>
         <div class="about-content">
-            <p class="lang-en">&emsp;&emsp;Started learning C# in 2019 and have been writing code in Visual Studio ever
-                since. In 2022 I began developing my own game on Unity - and in April 2026 shipped it on Steam
-                ("Fighters Guild"). In "Fighters Guild" I built from scratch: combat system, procedural level
-                generation, inventory system, quests, skills system, audio system and localization in 4
-                languages. I consider video games a great form of entertainment. I enjoy the game
-                development process, programming, level design, and game mechanics. <br>&emsp;&emsp;Open to C# developer
-                positions: game development, desktop, applied software.</p>
-            <p class="lang-ru">&emsp;&emsp;Начал изучать C# в 2019 году, с тех пор пишу код в Visual Studio. В 2022 году
-                приступил к созданию собственной игры на Unity, а в апреле 2026 выпустил её в Steam ("Fighters Guild").
-                В "Fighters Guild" реализовал с нуля: боевую систему, процедурную генерацию уровней, инвентарную
-                систему, квесты, систему скиллов, звуковую систему и локализацию на 4 языка. Считаю
-                видеоигры отличной формой развлечения. Нравится процесс создания игр, программирование, левел-дизайн,
-                игровые механики. <br>&emsp;&emsp;Рассматриваю позиции C# разработчика: gamedev, desktop, прикладное ПО.
-            </p>
+            <p class="lang-en">&emsp;&emsp;Started learning C# in 2019 and have been writing code in Visual Studio ever since. In 2022 I began developing my own game on Unity - and in April 2026 shipped it on Steam ("Fighters Guild"). In "Fighters Guild" I built from scratch: combat system, procedural level generation, inventory system, quests, skills system, audio system and localization in 4 languages. I consider video games a great form of entertainment. I enjoy the game development process, programming, level design, and game mechanics.<br>&emsp;&emsp;Open to C# developer positions: game development, desktop, applied software.</p>
+            <p class="lang-ru">&emsp;&emsp;Начал изучать C# в 2019 году, с тех пор пишу код в Visual Studio. В 2022 году приступил к созданию собственной игры на Unity, а в апреле 2026 выпустил её в Steam ("Fighters Guild"). В "Fighters Guild" реализовал с нуля: боевую систему, процедурную генерацию уровней, инвентарную систему, квесты, систему скиллов, звуковую систему и локализацию на 4 языка. Считаю видеоигры отличной формой развлечения. Нравится процесс создания игр, программирование, левел-дизайн, игровые механики. <br>&emsp;&emsp;Рассматриваю позиции C# разработчика: gamedev, desktop, прикладное ПО.</p>
         </div>
     </div>
-
     <div class="section-card">
         <h2><i class="fas fa-tools"></i> <span class="lang-en">Skills</span><span class="lang-ru">Навыки</span></h2>
-        <div class="skill-item"><i class="fas fa-code"></i><span class="skill-name">C#</span></div>
-        <div class="skill-item"><i class="fa-solid fa-terminal"></i><span class="skill-name">Visual Studio</span></div>
-        <div class="skill-item"><i class="fab fa-unity"></i><span class="skill-name">Unity 2022</span></div>
-        <div class="skill-item"><i class="fas fa-wand-magic-sparkles"></i><span class="skill-name">Stable
-                Diffusion</span></div>
-        <div class="skill-item"><i class="fas fa-cube"></i><span class="skill-name">Blender</span></div>
-        <div class="skill-item"><i class="fas fa-paint-brush"></i><span class="skill-name">Krita</span></div>
-        <div class="skill-item"><i class="fas fa-film"></i><span class="skill-name">CapCut</span></div>
+        <div class="core-skills-title"><span class="lang-en">Core Skills</span><span class="lang-ru">Основные навыки</span></div>
+        <div class="core-skills-list">
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-code"></i><span class="core-skill-title">C# / Unity</span></div><div class="core-skill-desc"><span class="lang-en">Gameplay programming, Gameplay systems</span><span class="lang-ru">Gameplay programming, Gameplay systems</span></div></div>
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-dungeon"></i><span class="core-skill-title"><span class="lang-en">Procedural Generation</span><span class="lang-ru">Процедурная генерация</span></span></div><div class="core-skill-desc"><span class="lang-en">Rooms, enemies with difficulty balancing, loot, lighting</span><span class="lang-ru">Комнаты, враги с балансировкой сложности, лут, освещение</span></div></div>
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-crosshairs"></i><span class="core-skill-title"><span class="lang-en">Combat System</span><span class="lang-ru">Боевая система</span></span></div><div class="core-skill-desc"><span class="lang-en">Turn-based logic, abilities, stat calculations, status effects</span><span class="lang-ru">Пошаговая логика, способности, расчёт характеристик, статусные эффекты</span></div></div>
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-database"></i><span class="core-skill-title"><span class="lang-en">Data Handling</span><span class="lang-ru">Работа с данными</span></span></div><div class="core-skill-desc"><span class="lang-en">CSV parsing, PlayerPrefs, Localization</span><span class="lang-ru">Разбор CSV, PlayerPrefs, Локализация</span></div></div>
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-sitemap"></i><span class="core-skill-title"><span class="lang-en">Data Structures</span><span class="lang-ru">Структуры данных</span></span></div><div class="core-skill-desc"><span class="lang-en">List, Dictionary, Arrays</span><span class="lang-ru">List, Dictionary, Arrays</span></div></div>
+            <div class="core-skill-item"><div class="core-skill-header"><i class="fas fa-tachometer-alt"></i><span class="core-skill-title"><span class="lang-en">Optimization</span><span class="lang-ru">Оптимизация</span></span></div><div class="core-skill-desc"><span class="lang-en">Unity Profiler</span><span class="lang-ru">Unity Profiler</span></div></div>
+        </div>
+        <div style="height:16px;"></div>
+        <div class="core-skills-title"><span class="lang-en">Tools</span><span class="lang-ru">Инструменты</span></div>
+        <div class="tools-grid">
+            <div class="skill-item"><i class="fa-solid fa-terminal"></i><span class="skill-name">Visual Studio</span></div>
+            <div class="skill-item"><i class="fab fa-unity"></i><span class="skill-name">Unity 2022</span></div>            
+            <div class="skill-item"><i class="fab fa-github"></i><span class="skill-name">GitHub</span></div>
+            <div class="skill-item"><i class="fas fa-cube"></i><span class="skill-name">Blender</span></div>
+            <div class="skill-item"><i class="fas fa-paint-brush"></i><span class="skill-name">Krita</span></div>
+            <div class="skill-item"><i class="fas fa-wand-magic-sparkles"></i><span class="skill-name">Stable D.</span></div>
+            <div class="skill-item"><i class="fas fa-film"></i><span class="skill-name">CapCut</span></div>
+        </div>
     </div>
-
     <div class="section-card">
         <h2><i class="fas fa-trophy"></i> <span class="lang-en">Projects</span><span class="lang-ru">Проекты</span></h2>
         <div class="project-card">
-            <span
-                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
-                    class="lang-en">[MAIN PROJECT]</span><span class="lang-ru">[ОСНОВНОЙ ПРОЕКТ]</span></span>
+            <span style="display:block;text-align:right;font-size:6px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span class="lang-en">[MAIN PROJECT]</span><span class="lang-ru">[ОСНОВНОЙ ПРОЕКТ]</span></span>
             <h3><i class="fas fa-hand-fist"></i> Fighters Guild</h3>
-            <p class="lang-en">&emsp;&emsp;A fantasy roguelike with a simple story told through animated cutscenes and
-                dialogues. Procedural raids, guild progression, character builds, loot, turn-based combat, quests. Solo
-                dev. Zero budget. 4 years. Steam (April 2026).</p>
-            <p class="lang-ru">&emsp;&emsp;Фэнтезийный рогалик с простым сюжетом, раскрытым через анимационные ролики и
-                диалоги. Процедурные рейды, развитие гильдии, создание билдов, лут, пошаговые бои, выполнение квестов. 4
-                года соло-разработки. Нулевой бюджет разработки. Релиз в Steam (апрель 2026).</p>
-            <p class="project-stack-alt"><span class="lang-en">Programming C# · 2D/3D Art & UI · Game Design · 2D/3D
-                    Animation · Localization</span><span class="lang-ru">Программирование C# · 2D/3D-арт и UI ·
-                    Геймдизайн · 2D/3D-анимации · Локализация</span></p>
+            <p class="lang-en">&emsp;&emsp;A fantasy roguelike with a simple story told through animated cutscenes and dialogues. Procedural raids, guild progression, character builds, loot, turn-based combat, quests. Solo dev. Zero budget. 4 years. Steam (April 2026).</p>
+            <p class="lang-ru">&emsp;&emsp;Фэнтезийный рогалик с простым сюжетом, раскрытым через анимационные ролики и диалоги. Процедурные рейды, развитие гильдии, создание билдов, лут, пошаговые бои, выполнение квестов. 4 года соло-разработки. Нулевой бюджет разработки. Релиз в Steam (апрель 2026).</p>
+            <p class="project-stack-alt"><span class="lang-en">Programming C# · 2D/3D Art & UI · Game Design · 2D/3D Animation · Localization</span><span class="lang-ru">Программирование C# · 2D/3D-арт и UI · Геймдизайн · 2D/3D-анимации · Локализация</span></p>
             <div class="btn-row">
-                <a href="https://store.steampowered.com/app/4581720/Fighters_Guild/" target="_blank"><i
-                        class="fab fa-steam"></i> Steam</a>
+                <a href="https://store.steampowered.com/app/4581720/Fighters_Guild/" target="_blank"><i class="fab fa-steam"></i> Steam</a>
                 <button onclick="toggleScreens('fgScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="fgScreens" style="display:none;">
@@ -440,15 +205,12 @@
             </div>
         </div>
         <div class="project-card">
-            <span
-                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
-                    class="lang-en">[MINI GAME]</span><span class="lang-ru">[МИНИ-ИГРА]</span></span>
+            <span style="display:block;text-align:right;font-size:6px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span class="lang-en">[MINI GAME]</span><span class="lang-ru">[МИНИ-ИГРА]</span></span>
             <h3><i class="fas fa-dice"></i> Tavern Dice</h3>
             <p class="lang-en">A dice & coin mini-game in a 3D fantasy tavern. 12 languages supported.</p>
             <p class="lang-ru">Мини-игра в кости и монетку в 3D таверне. Поддержка 12 языков.</p>
             <div class="btn-row">
-                <a href="https://play.unity.com/en/games/d3fb1109-ee16-4879-80b7-ce4039da7a0f/tavern-dice"
-                    target="_blank"><i class="fab fa-unity"></i> Play</a>
+                <a href="https://play.unity.com/en/games/d3fb1109-ee16-4879-80b7-ce4039da7a0f/tavern-dice" target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('diceScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="diceScreens" style="display:none;">
@@ -457,15 +219,12 @@
             </div>
         </div>
         <div class="project-card">
-            <span
-                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
-                    class="lang-en">[CONCEPT]</span><span class="lang-ru">[КОНЦЕПТ]</span></span>
+            <span style="display:block;text-align:right;font-size:6px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span class="lang-en">[CONCEPT]</span><span class="lang-ru">[КОНЦЕПТ]</span></span>
             <h3><i class="fas fa-dungeon"></i> Dungeon Menu</h3>
             <p class="lang-en">Interactive main menu blending 3D environment with 2D UI. Built in Unity.</p>
-            <p class="lang-ru">Интерактивное главное меню - 3D окружение и 2D UI. Unity.</p>
+            <p class="lang-ru">Интерактивное главное меню — 3D окружение и 2D UI. Unity.</p>
             <div class="btn-row">
-                <a href="https://play.unity.com/en/games/6214c7d1-3116-4d4c-b76a-e73d6d92cd42/dungeon-main-menu-3dui-concept"
-                    target="_blank"><i class="fab fa-unity"></i> Play</a>
+                <a href="https://play.unity.com/en/games/6214c7d1-3116-4d4c-b76a-e73d6d92cd42/dungeon-main-menu-3dui-concept" target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('menuScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="menuScreens" style="display:none;">
@@ -474,17 +233,12 @@
             </div>
         </div>
         <div class="project-card">
-            <span
-                style="display:block;text-align:right;font-size:7px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span
-                    class="lang-en">[LEARNING]</span><span class="lang-ru">[ОБУЧЕНИЕ]</span></span>
+            <span style="display:block;text-align:right;font-size:6px;font-family:'Press Start 2P',monospace;color:var(--color-accent);opacity:0.8;"><span class="lang-en">[LEARNING]</span><span class="lang-ru">[ОБУЧЕНИЕ]</span></span>
             <h3><i class="fas fa-circle"></i> Roll a Ball</h3>
-            <p class="lang-en">Classic Unity tutorial, expanded with a custom level, HP system, and healing/damage
-                crystal pickups.</p>
-            <p class="lang-ru">Классический туториал Unity с кастомным уровнем, системой здоровья, кристаллами лечения и
-                урона.</p>
+            <p class="lang-en">Classic Unity tutorial, expanded with a custom level, HP system, and healing/damage crystal pickups.</p>
+            <p class="lang-ru">Классический туториал Unity с кастомным уровнем, системой здоровья, кристаллами лечения и урона.</p>
             <div class="btn-row">
-                <a href="https://play.unity.com/en/games/154f173d-8b28-4cf1-9180-d12ad8c38dae/roll-a-ball-custom-level-design"
-                    target="_blank"><i class="fab fa-unity"></i> Play</a>
+                <a href="https://play.unity.com/en/games/154f173d-8b28-4cf1-9180-d12ad8c38dae/roll-a-ball-custom-level-design" target="_blank"><i class="fab fa-unity"></i> Play</a>
                 <button onclick="toggleScreens('rollScreens')"><i class="fas fa-images"></i> Screenshots</button>
             </div>
             <div class="mobile-screenshots" id="rollScreens" style="display:none;">
@@ -493,68 +247,33 @@
             </div>
         </div>
     </div>
-
     <div class="section-card">
-        <h2><i class="fas fa-scroll"></i> <span class="lang-en">Contacts</span><span class="lang-ru">Контакты</span>
-        </h2>
+        <h2><i class="fas fa-scroll"></i> <span class="lang-en">Contacts</span><span class="lang-ru">Контакты</span></h2>
         <div class="contact-row">
             <a href="#" onclick="copyEmail(event)"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://github.com/RijiyInduk" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://store.steampowered.com/search/?developer=MrDrist" target="_blank"><i
-                    class="fab fa-steam"></i> Steam</a>
-            <a href="https://play.unity.com/en/user/e2ff9078-b6a2-47f1-9edb-48536f260164" target="_blank"><i
-                    class="fab fa-unity"></i> Unity Play</a>
-            <a href="https://learn.unity.com/u/602e190bedbc2a259f8362ad" target="_blank"><i
-                    class="fas fa-graduation-cap"></i> Unity Learning</a>
+            <a href="https://github.com/RigiyInduk" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://store.steampowered.com/search/?developer=MrDrist" target="_blank"><i class="fab fa-steam"></i> Steam</a>
+            <a href="https://play.unity.com/en/user/e2ff9078-b6a2-47f1-9edb-48536f260164" target="_blank"><i class="fab fa-unity"></i> Unity Play</a>
+            <a href="https://learn.unity.com/u/602e190bedbc2a259f8362ad" target="_blank"><i class="fas fa-graduation-cap"></i> Unity Learning</a>
         </div>
     </div>
-
-    <div class="footer">
-        <p>&copy; 2026 Timur Idiiatullin</p>
-    </div>
-
+    <div class="footer"><p>&copy; 2026 Timur Idiiatullin</p></div>
     <script>
-        function switchLang(l) {
-            document.body.setAttribute('data-lang', l);
-            document.querySelectorAll('.toggle-group:first-child button').forEach(function (b) {
-                b.classList.toggle('active', b.getAttribute('data-lang') === l);
-            });
-            localStorage.setItem('portfolio-lang', l);
-        }
-        function switchTheme(t) {
-            document.body.setAttribute('data-theme', t);
-            document.querySelectorAll('[data-theme-btn]').forEach(function (b) {
-                b.classList.toggle('active', b.getAttribute('data-theme-btn') === t);
-            });
-            localStorage.setItem('portfolio-theme', t);
-        }
-        function toggleScreens(id) {
-            var el = document.getElementById(id);
-            if (el) el.style.display = el.style.display === 'none' ? 'grid' : 'none';
-        }
+        function switchLang(l) { document.body.setAttribute('data-lang', l); document.querySelectorAll('.toggle-group:first-child button').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); }); localStorage.setItem('portfolio-lang', l); }
+        function switchTheme(t) { document.body.setAttribute('data-theme', t); document.querySelectorAll('[data-theme-btn]').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-theme-btn') === t); }); localStorage.setItem('portfolio-theme', t); }
+        function toggleScreens(id) { var el = document.getElementById(id); if (el) el.style.display = el.style.display === 'none' ? 'grid' : 'none'; }
         function copyEmail(e) {
-            e.preventDefault();
-            var email = 'timurr1@gmail.com';
-            var ta = document.createElement('textarea');
-            ta.value = email; document.body.appendChild(ta); ta.select();
-            try { document.execCommand('copy'); } catch (err) { }
-            document.body.removeChild(ta);
+            e.preventDefault(); var email = 'timurr1@gmail.com';
+            var ta = document.createElement('textarea'); ta.value = email; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch(err) {} document.body.removeChild(ta);
             var lang = document.body.getAttribute('data-lang') || 'en';
             var msgText = lang === 'ru' ? 'адрес почты ' + email + ' скопирован в буфер обмена' : 'email ' + email + ' copied to clipboard';
             var msg = document.createElement('div');
             msg.textContent = msgText;
             msg.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--color-card-bg);color:var(--color-accent);font-family:\'IBM Plex Mono\',monospace;font-size:14px;padding:14px 22px;border:2px solid var(--color-accent);z-index:9999;text-align:center;line-height:1.4;';
-            document.body.appendChild(msg);
-            setTimeout(function () { msg.remove(); }, 3000);
+            document.body.appendChild(msg); setTimeout(function() { msg.remove(); }, 3000);
         }
-        (function () {
-            var l = localStorage.getItem('portfolio-lang');
-            if (l === 'ru' || l === 'en') switchLang(l);
-            var t = localStorage.getItem('portfolio-theme');
-            if (t === 'dark' || t === 'warm') switchTheme(t);
-            else switchTheme('dark');
-        })();
+        (function() { var l = localStorage.getItem('portfolio-lang'); if (l === 'ru' || l === 'en') switchLang(l); var t = localStorage.getItem('portfolio-theme'); if (t === 'dark' || t === 'warm') switchTheme(t); else switchTheme('dark'); })();
     </script>
 </body>
-
 </html>
